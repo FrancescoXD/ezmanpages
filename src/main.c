@@ -1,23 +1,27 @@
 #include "parser.h"
 
 int main(void) {
-    // File used only to test the library
+    // Return code to check errors
     parser_error_t ret;
 
-    // Define the `man_parser_t` struct
-    man_parser_t man_parser;
+    // Define the `ezmanpages_t` struct
+    ezmanpages_t ezmanpages;
 
-    // Init the ezmanparser
-    ret = ezmanparser_init(&man_parser, "ls", 1, "NAME");
-    if (ret == E_PARSER_SUCCESS) {
-        //fprintf(stderr, "%s", parser_error_desc[ret]);
+    // Init the ezmanpages
+    ret = ezmanpages_init(&ezmanpages, "popen", 3, "NAME");
+    fprintf(stdout, "ezmanpages struct:\n%s %s %s\n", ezmanpages.name, ezmanpages.page, ezmanpages.section);
+    if (ret != E_PARSER_SUCCESS) {
+        // perror() like function
+        ezmanpages_perror("[error] parser error", ret);
         exit(EXIT_FAILURE);
     }
 
-    // You can use those functions to change the `man_parser_t` structure
-    //ezmanparser_set_name();
-    //ezmanparser_set_page();
-    //ezmanparser_set_section();
+    // Use those functions to change the `ezmanpages_t` structure
+    ezmanpages_set_name(&ezmanpages, "mv");
+    ezmanpages_set_page(&ezmanpages, 1);
+    ezmanpages_set_section(&ezmanpages, "SYNOPSIS");
+
+    fprintf(stdout, "ezmanpages struct:\n%s %s %s\n", ezmanpages.name, ezmanpages.page, ezmanpages.section);
 
     return 0;
 }

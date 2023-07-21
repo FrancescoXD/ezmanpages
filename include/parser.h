@@ -10,16 +10,19 @@
 #define MAX_PAGE_LEN 2
 #define MAX_SECTION_LEN 20
 
-typedef struct {
+struct _ezmanpages {
     char name[MAX_NAME_LEN];
     char page[MAX_PAGE_LEN];
     char section[MAX_SECTION_LEN];
-} man_parser_t;
+};
 
-parser_error_t ezmanparser_init(man_parser_t *man_parser, const char *name, int page, const char *section);
-parser_error_t ezmanparser_set_name(man_parser_t *man_parser, const char *name);
-parser_error_t ezmanparser_set_page(man_parser_t *man_parser, int page);
-parser_error_t ezmanparser_set_section(man_parser_t *man_parser, const char *section);
+typedef struct _ezmanpages ezmanpages_t;
+
+parser_error_t ezmanpages_init(ezmanpages_t *ezmanpages, const char *name, int page, const char *section);
+parser_error_t ezmanpages_set_name(ezmanpages_t *ezmanpages, const char *name);
+parser_error_t ezmanpages_set_page(ezmanpages_t *ezmanpages, int page);
+parser_error_t ezmanpages_set_section(ezmanpages_t *ezmanpages, const char *section);
+
 parser_error_t _find_section(const char *section);
 
 #endif
