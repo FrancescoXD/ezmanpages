@@ -1,4 +1,4 @@
-# ezmanpages (v0.2.0a)
+# ezmanpages (v0.2.1a)
 A simple man pages parser written in C
 
 ## Requirements

@@ -1,4 +1,6 @@
-#include <ezmanpages/ezmanpages.h>
+#include "ezmanpages.h"
+// Use this instead
+//#include <ezmanpages/ezmanpages.h>
 
 #define BUFFER_SIZE 1024
 
@@ -18,13 +20,13 @@ int main(void) {
     ezmanpages_t ezmanpages;
 
     // Init the ezmanpages
-    ret = ezmanpages_init(&ezmanpages, "popen", 3, "SYNOPSIS");
+    ret = ezmanpages_init(&ezmanpages, "mv", 1, "SYNOPSIS");
     fprintf(stdout, "ezmanpages struct:\n%s %s %s\n", ezmanpages.name, ezmanpages.page, ezmanpages.section);
     check_ret(ret);
 
     // Use those functions to change the `ezmanpages_t` structure
-    ezmanpages_set_name(&ezmanpages, "mv");
-    ezmanpages_set_page(&ezmanpages, 1);
+    ezmanpages_set_name(&ezmanpages, "free");
+    ezmanpages_set_page(&ezmanpages, 3);
     ezmanpages_set_section(&ezmanpages, "DESCRIPTION");
     fprintf(stdout, "ezmanpages struct:\n%s %s %s\n", ezmanpages.name, ezmanpages.page, ezmanpages.section);
 

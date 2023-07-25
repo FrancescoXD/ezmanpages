@@ -3,9 +3,9 @@
 parser_error_t _find_section(FILE *stream, const char *section, char *buffer, size_t bufsize) {
     char line[LINE_LEN];
     bool found = false;
-    size_t result_len = 0;
+    size_t result_len = strlen(buffer);
 
-    memset(buffer, 0, sizeof(buffer) - 1);
+    memset(buffer, 0, bufsize - 1);
 
     while ((fgets(line, LINE_LEN, stream) != NULL)) {
         if (isupper(line[0]) && found) {
