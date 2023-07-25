@@ -1,4 +1,5 @@
 #include "parser.h"
+#include "utils.h"
 
 parser_error_t ezmanpages_init(ezmanpages_t *ezmanpages, const char *name, int page, const char *section) {
     strncpy(ezmanpages->name, name, MAX_NAME_LEN);
@@ -38,8 +39,24 @@ parser_error_t ezmanpages_set_section(ezmanpages_t *ezmanpages, const char *sect
     return E_PARSER_SUCCESS;
 }
 
-parser_error_t _find_section(const char *section) {
-    printf("%s", section);
+parser_error_t ezmanpages_parse(ezmanpages_t ezmanpages, char *buffer) {
+    char cmd[MAX_CMD_LEN];
+    int ret = snprintf(cmd, MAX_CMD_LEN, "bash -c 'man %s %s | col -b'", ezmanpages.page, ezmanpages.name);
+    if (ret < 0) {
+        return E_PARSER_ERROR;
+    }
 
-    return E_PARSER_SUCCESS;
+    FILE *stream = popen(cmd, "r");
+    if (stream == NULL) {
+        return E_PARSER_ERROR;
+    }
+
+    parser_error_t ret_code = _find_section(stream, ezmanpages.section, buffer);
+
+    ret = pclose(stream);
+    if (ret == -1) {
+        return E_PARSER_ERROR;
+    }
+
+    return ret_code;
 }

@@ -6,6 +6,7 @@ struct _parser_error_desc parser_error_desc[] = {
     { E_PARSER_PAGE_NOT_FOUND, "Page not found in man pages" },
     { E_PARSER_SECTION_NOT_FOUND, "Section not found in man pages" },
     { E_PARSER_INIT_FAILED, "Unable to init the ezmanpages_t struct" },
+    { E_PARSER_MAN_ERROR, "Unable to run man" },
     { E_PARSER_ERROR, "General error" }
 };
 

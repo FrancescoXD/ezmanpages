@@ -1,5 +1,5 @@
-#ifndef __EZMANPARSER_ERRORS_H__
-#define __EZMANPARSER_ERRORS_H__
+#ifndef __EZMANPAGES_ERRORS_H__
+#define __EZMANPAGES_ERRORS_H__
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -10,7 +10,8 @@ enum _parser_error {
     E_PARSER_PAGE_NOT_FOUND = -2,
     E_PARSER_SECTION_NOT_FOUND = -3,
     E_PARSER_INIT_FAILED = -4,
-    E_PARSER_ERROR = -5
+    E_PARSER_MAN_ERROR = -5,
+    E_PARSER_ERROR = -6
 };
 
 typedef enum _parser_error parser_error_t;
