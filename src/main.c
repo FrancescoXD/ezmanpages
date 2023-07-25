@@ -1,4 +1,4 @@
-#include <ezmanpages.h>
+#include <ezmanpages/ezmanpages.h>
 
 #define BUFFER_SIZE 4096
 
