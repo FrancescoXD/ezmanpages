@@ -9,6 +9,6 @@
 
 #define LINE_LEN 100
 
-parser_error_t _find_section(FILE *stream, const char *section, char *buffer);
+parser_error_t _find_section(FILE *stream, const char *section, char *buffer, size_t bufsize);
 
 #endif

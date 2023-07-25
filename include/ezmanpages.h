@@ -24,6 +24,6 @@ parser_error_t ezmanpages_init(ezmanpages_t *ezmanpages, const char *name, int p
 parser_error_t ezmanpages_set_name(ezmanpages_t *ezmanpages, const char *name);
 parser_error_t ezmanpages_set_page(ezmanpages_t *ezmanpages, int page);
 parser_error_t ezmanpages_set_section(ezmanpages_t *ezmanpages, const char *section);
-parser_error_t ezmanpages_parse(ezmanpages_t ezmanpages, char *buffer);
+parser_error_t ezmanpages_parse(ezmanpages_t ezmanpages, char *buffer, size_t bufsize);
 
 #endif

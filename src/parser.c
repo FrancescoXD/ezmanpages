@@ -39,7 +39,7 @@ parser_error_t ezmanpages_set_section(ezmanpages_t *ezmanpages, const char *sect
     return E_PARSER_SUCCESS;
 }
 
-parser_error_t ezmanpages_parse(ezmanpages_t ezmanpages, char *buffer) {
+parser_error_t ezmanpages_parse(ezmanpages_t ezmanpages, char *buffer, size_t bufsize) {
     char cmd[MAX_CMD_LEN];
     int ret = snprintf(cmd, MAX_CMD_LEN, "bash -c 'man %s %s | col -b'", ezmanpages.page, ezmanpages.name);
     if (ret < 0) {
@@ -51,7 +51,7 @@ parser_error_t ezmanpages_parse(ezmanpages_t ezmanpages, char *buffer) {
         return E_PARSER_ERROR;
     }
 
-    parser_error_t ret_code = _find_section(stream, ezmanpages.section, buffer);
+    parser_error_t ret_code = _find_section(stream, ezmanpages.section, buffer, bufsize);
 
     ret = pclose(stream);
     if (ret == -1) {

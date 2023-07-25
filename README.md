@@ -38,6 +38,8 @@ int main(void) {
 ```
 To compile it just run: `gcc file.c -lezmanpages`!
 
+If you want more examples check the [main](./src/main.c) file.
+
 ### TODO
 - Parse files instead of the command (/usr/share/man)
 - Write mine implementation of `col`

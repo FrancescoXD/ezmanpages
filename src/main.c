@@ -1,6 +1,6 @@
 #include <ezmanpages/ezmanpages.h>
 
-#define BUFFER_SIZE 4096
+#define BUFFER_SIZE 1024
 
 void check_ret(parser_error_t ret) {
     if (ret != E_PARSER_SUCCESS) {
@@ -30,7 +30,7 @@ int main(void) {
 
     // Now parse the man page
     char result[BUFFER_SIZE];
-    ret = ezmanpages_parse(ezmanpages, result);
+    ret = ezmanpages_parse(ezmanpages, result, BUFFER_SIZE);
     check_ret(ret);
 
     // Print the results

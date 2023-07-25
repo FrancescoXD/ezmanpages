@@ -1,6 +1,6 @@
 #include "utils.h"
 
-parser_error_t _find_section(FILE *stream, const char *section, char *buffer) {
+parser_error_t _find_section(FILE *stream, const char *section, char *buffer, size_t bufsize) {
     char line[LINE_LEN];
     bool found = false;
     size_t result_len = 0;
@@ -14,7 +14,7 @@ parser_error_t _find_section(FILE *stream, const char *section, char *buffer) {
 
         if (found) {
             size_t line_len = strlen(line);
-            if (result_len + line_len < 4096) {
+            if ((result_len + line_len) < bufsize) {
                 strcat(buffer, line);
                 result_len += line_len;
             } else {
