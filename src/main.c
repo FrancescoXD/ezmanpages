@@ -1,4 +1,4 @@
-#include "parser.h"
+#include <ezmanpages.h>
 
 #define BUFFER_SIZE 4096
 

@@ -8,9 +8,7 @@ parser_error_t _find_section(FILE *stream, const char *section, char *buffer) {
     memset(buffer, 0, sizeof(buffer) - 1);
 
     while ((fgets(line, LINE_LEN, stream) != NULL)) {
-        //_removenewline(line);
         if (isupper(line[0]) && found) {
-            //printf("found an upper char: %s", line);
             break;
         }
 
@@ -19,16 +17,13 @@ parser_error_t _find_section(FILE *stream, const char *section, char *buffer) {
             if (result_len + line_len < 4096) {
                 strcat(buffer, line);
                 result_len += line_len;
-                //printf("%s", line);
             } else {
                 break;
             }
         }
 
         if (strstr(line, section)) {
-            //_dbprint("section found!");
             strcat(buffer, line); // maybe that needs a check...
-            //fprintf(stdout, "%s", line);
             found = true;
         }
     }
@@ -38,15 +33,4 @@ parser_error_t _find_section(FILE *stream, const char *section, char *buffer) {
     }
 
     return E_PARSER_SECTION_NOT_FOUND;
-}
-
-void _dbprint(const char *text) {
-    fprintf(stdout, "[debug] %s\n", text);
-}
-
-void _removenewline(char *text) {
-    int len = strlen(text);
-    if (text[len - 1] == '\n') {
-        text[len - 1] = '\0';
-    }
 }

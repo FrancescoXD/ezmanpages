@@ -1,4 +1,4 @@
-#include "parser.h"
+#include "ezmanpages.h"
 #include "utils.h"
 
 parser_error_t ezmanpages_init(ezmanpages_t *ezmanpages, const char *name, int page, const char *section) {
