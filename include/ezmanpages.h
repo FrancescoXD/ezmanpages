@@ -10,8 +10,6 @@
 #define MAX_PAGE_LEN 2
 #define MAX_SECTION_LEN 20
 
-#define MAX_CMD_LEN 64
-
 struct _ezmanpages {
     char name[MAX_NAME_LEN];
     char page[MAX_PAGE_LEN];

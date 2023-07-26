@@ -30,7 +30,7 @@ int main(void) {
     ezmanpages_t parser;
     ezmanpages_init(&parser, "free", 3, "SYNOPSIS");
     char buffer[4096];
-    ezmanpages_parse(parser, buffer);
+    ezmanpages_parse(parser, buffer, 4096);
     fprintf(stdout, "%s", buffer);
 
     return 0;

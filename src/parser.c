@@ -48,14 +48,14 @@ parser_error_t ezmanpages_parse(ezmanpages_t ezmanpages, char *buffer, size_t bu
 
     FILE *stream = popen(cmd, "r");
     if (stream == NULL) {
-        return E_PARSER_ERROR;
+        return E_PARSER_MAN_ERROR;
     }
 
     parser_error_t ret_code = _find_section(stream, ezmanpages.section, buffer, bufsize);
 
     ret = pclose(stream);
     if (ret == -1) {
-        return E_PARSER_ERROR;
+        return E_PARSER_MAN_ERROR;
     }
 
     return ret_code;

@@ -4,8 +4,7 @@ parser_error_t _find_section(FILE *stream, const char *section, char *buffer, si
     char line[LINE_LEN];
     bool found = false;
     size_t result_len = strlen(buffer);
-
-    memset(buffer, 0, bufsize - 1);
+    char *next;
 
     while ((fgets(line, LINE_LEN, stream) != NULL)) {
         if (isupper(line[0]) && found) {
@@ -15,7 +14,7 @@ parser_error_t _find_section(FILE *stream, const char *section, char *buffer, si
         if (found) {
             size_t line_len = strlen(line);
             if ((result_len + line_len) < bufsize) {
-                strcat(buffer, line);
+                next = stpcpy(next, line);
                 result_len += line_len;
             } else {
                 break;
@@ -23,7 +22,7 @@ parser_error_t _find_section(FILE *stream, const char *section, char *buffer, si
         }
 
         if (strstr(line, section)) {
-            strcat(buffer, line); // maybe that needs a check...
+            next = stpcpy(buffer, line);
             found = true;
         }
     }
