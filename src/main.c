@@ -5,10 +5,15 @@
 #define BUFFER_SIZE 1024
 
 void check_ret(parser_error_t ret) {
-    if (ret != E_PARSER_SUCCESS) {
-        // perror() like function
-        ezmanpages_perror("[error] parser error", ret);
-        exit(EXIT_FAILURE);
+    switch (ret) {
+        case E_PARSER_SUCCESS:
+            break;
+        case E_PARSER_TRUNC:
+            ezmanpages_perror("[info]", ret);
+            break;
+        default:
+            ezmanpages_perror("[error] parser error", ret);
+            exit(EXIT_FAILURE);
     }
 }
 

@@ -1,6 +1,12 @@
 #include "utils.h"
 
 parser_error_t _find_section(FILE *stream, const char *section, char *buffer, size_t bufsize) {
+#ifdef PARSER_SAFE
+    if (!(stream && section && *section && buffer && *buffer && bufsize)) {
+        return E_PARSER_INVALID_PARAM;
+    }
+#endif
+
     char line[LINE_LEN];
     bool found = false;
     size_t result_len = strlen(buffer);
@@ -17,7 +23,7 @@ parser_error_t _find_section(FILE *stream, const char *section, char *buffer, si
                 next = stpcpy(next, line);
                 result_len += line_len;
             } else {
-                break;
+                return E_PARSER_TRUNC;
             }
         }
 
